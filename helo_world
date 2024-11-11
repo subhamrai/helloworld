@@ -1,0 +1,18 @@
+def product_except_self(nums):
+    n = len(nums)
+    # Initialize two arrays to store the prefix and suffix products
+    result = [1] * n
+    left_product = 1
+    right_product = 1
+
+    # Calculate the prefix product for each element
+    for i in range(n):
+        result[i] = left_product
+        left_product *= nums[i]
+
+    # Calculate the suffix product and multiply it with the prefix product
+    for i in range(n - 1, -1, -1):
+        result[i] *= right_product
+        right_product *= nums[i]
+
+    return result
